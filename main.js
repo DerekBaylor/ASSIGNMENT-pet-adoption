@@ -238,26 +238,23 @@ const handleButtonClick = (event) => {
   if (event.target.id === "cat") {
     const onlyCats = petFilter(pets, event.target.id);
      printPets(onlyCats);
-     console.log(onlyCats);
   }
   if (event.target.id === "dog") {
     const onlyDogs = petFilter(pets, event.target.id);
     printPets(onlyDogs);
-    console.log(onlyDogs)
   }
   if (event.target.id === "dino") {
     const onlyDinos = petFilter(pets, event.target.id);
     printPets(onlyDinos);
-    console.log(onlyDinos)
   }
 };
-//${pet.imageUrl}
-const printPets = (_petArray) => { 
+
+const printPets = (petArray) => { 
   let domString2 = '';
-  pets.forEach((pet) => {
+  petArray.forEach((pet) => {
     domString2 += `
     <div class="card" style="width: 18rem;">
-   <img src={...} class="card-img-top" alt=${pet.name}>   
+   <img src=${pet.imageUrl} class="card-img-top" alt=${pet.name}>   
     <div class="card-body">
       <h5 class="card-title">${pet.name}</h5>
       <p class="card-text">${pet.type}</p>
