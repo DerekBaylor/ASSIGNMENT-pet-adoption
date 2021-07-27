@@ -11,7 +11,7 @@ const pets = [
       color: "Poop-Colored",
       specialSkill: "Just picks the tomatoes off of a sandwich instead of requesting a whole new sandwich.",
       type: "dino",
-      imageUrl: "http://www.jozilife.co.za/wp-content/uploads/The-Dino-Expo.jpg"
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk8wZf3hxqA7HYcP8XdEJdKPIz5KftpCCQvUoUJS7o2cnjeoJZAfu205aJOnymUrV9T8&usqp=CAU"
     },
     {
       name: "Whiskers",
@@ -74,7 +74,7 @@ const pets = [
       color: "Orange",
       specialSkill: "Can be around food without staring creepily at it.",
       type: "dino",
-      imageUrl: "http://www.cantref.com/userfiles/events/walking%20dino.jpg?w=600"
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk8wZf3hxqA7HYcP8XdEJdKPIz5KftpCCQvUoUJS7o2cnjeoJZAfu205aJOnymUrV9T8&usqp=CAU"
     },
     {
       name: "Buster",
@@ -151,7 +151,7 @@ const pets = [
       color: "Orange",
       specialSkill: "Is comfortable with jokes about his receding hairline.",
       type: "cat",
-      imageUrl: "http://funnyanimalphoto.com/wp-content/uploads/2013/08/cat_caught_mouse_thegatewaypundit.jpg"
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk8wZf3hxqA7HYcP8XdEJdKPIz5KftpCCQvUoUJS7o2cnjeoJZAfu205aJOnymUrV9T8&usqp=CAU"
     },
     {
       name: "Buddy",
@@ -210,3 +210,77 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+
+const renderToDom = (divId, textToPrint) => {
+  const selectedDiv = document.querySelector(divId);
+  selectedDiv.innerHTML = textToPrint;
+};
+
+const buttons = () => {
+  const domString = `
+  <button type="button" class="btn btn-primary" id="All">All</button>
+  <button type="button" class="btn btn-secondary" id="cat">Cats</button>
+  <button type="button" class="btn btn-success" id="dog">Dogs</button>
+  <button type="button" class="btn btn-danger" id="dino">Dinos</button>
+  `;
+
+  renderToDom("#buttonContainer", domString);
+};
+
+const petFilter = (array, type) => {
+  return array.filter((petObj) => petObj.type === type);
+};
+
+const handleButtonClick = (event) => {
+  if (event.target.id === "All") {
+     printPets(pets);
+  }
+  if (event.target.id === "cat") {
+    const onlyCats = petFilter(pets, event.target.id);
+     printPets(onlyCats);
+     console.log(onlyCats);
+  }
+  if (event.target.id === "dog") {
+    const onlyDogs = petFilter(pets, event.target.id);
+    printPets(onlyDogs);
+    console.log(onlyDogs)
+  }
+  if (event.target.id === "dino") {
+    const onlyDinos = petFilter(pets, event.target.id);
+    printPets(onlyDinos);
+    console.log(onlyDinos)
+  }
+};
+//${pet.imageUrl}
+const printPets = (_petArray) => { 
+  let domString2 = '';
+  pets.forEach((pet) => {
+    domString2 += `
+    <div class="card" style="width: 18rem;">
+   <img src={...} class="card-img-top" alt=${pet.name}>   
+    <div class="card-body">
+      <h5 class="card-title">${pet.name}</h5>
+      <p class="card-text">${pet.type}</p>
+      <p class="card-text">${pet.color}</p>
+      <p class="card-text">${pet.specialSkill}</p>
+      <a href="#" class="btn-primary">Adopt Me!</a>
+    </div>
+  </div>`;
+  });
+
+  renderToDom("#petContainer", domString2);
+};
+
+const buttonEvents = () => {
+  document.querySelector('#buttonContainer')
+    .addEventListener('click', handleButtonClick);
+
+};
+
+const init = () => {
+  buttons(); 
+  buttonEvents(); 
+  printPets(pets);
+};
+
+init();
