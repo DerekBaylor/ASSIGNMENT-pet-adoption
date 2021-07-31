@@ -88,7 +88,7 @@ const pets = [
       color: "Red",
       specialSkill: "Expertly quotes and recognizes dialogue from early seasons of The Simpsons.",
       type: "dog",
-      imageUrl: "http://1kjkdg1axrkd2g03cnboj761.wpengine.netdna-cdn.com/wp-content/uploads/2017/12/braydon-anderson-105552-e1512684107659.jpg"
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk8wZf3hxqA7HYcP8XdEJdKPIz5KftpCCQvUoUJS7o2cnjeoJZAfu205aJOnymUrV9T8&usqp=CAU"
     },
     {
       name: "Samantha",
